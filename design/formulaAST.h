@@ -22,12 +22,19 @@ public:
     FormulaAST& operator=(FormulaAST&&) = default;
     ~FormulaAST();
 
-    double Execute() const;
+    double Execute(const SheetInterface& sheet) const;
     void Print(std::ostream& out) const;
     void PrintFormula(std::ostream& out) const;
 
+    // получить ссылку на список позиций ячеек
+    const std::forward_list<Position>& GetCells() const;
+    std::forward_list<Position>& GetCells();
+
 private:
     std::unique_ptr<ASTImpl::Expr> root_expr_;
+
+    // храним все встреченные индексы ячеек в отдельном списке
+    std::forward_list<Position> cells_
 };
 
 FormulaAST ParseFormulaAST(std::istream& in);
