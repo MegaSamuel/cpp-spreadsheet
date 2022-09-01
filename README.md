@@ -12,6 +12,7 @@
 Выполнить команды:
 - cmake ../spreadsheet -DCMAKE_BUILD_TYPE=Release
 - cmake --build .
+
 В каталоге build/Release/ будет создан исполняемый файл spreadsheet
 
 ## Системные требования
